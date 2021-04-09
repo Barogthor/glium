@@ -353,7 +353,7 @@ macro_rules! implement_uniform_block {
                                 let pointer_to_possibly_fat_pointer_to_field:&u64=unsafe{mem::transmute( &possibly_fat_pointer_to_field )};
                                 let pointer_to_field=*pointer_to_possibly_fat_pointer_to_field;
                                 pointer_to_field as usize
-                            };
+                            } + base_offset;
 
                             match matches_from_ty(unsafe{&(*dummy).$field_name}, reflected_ty, input_offset) {
                                 Ok(_) => (),
